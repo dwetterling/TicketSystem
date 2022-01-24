@@ -1,0 +1,16 @@
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\TicketSystem.exe
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\TicketSystem.deps.json
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\TicketSystem.runtimeconfig.json
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\TicketSystem.runtimeconfig.dev.json
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\TicketSystem.dll
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\ref\TicketSystem.dll
+E:\7th semester\.Net Database\TicketSystem\bin\Debug\net5.0\TicketSystem.pdb
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.csproj.AssemblyReference.cache
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.GeneratedMSBuildEditorConfig.editorconfig
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.AssemblyInfoInputs.cache
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.AssemblyInfo.cs
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.csproj.CoreCompileInputs.cache
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.dll
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\ref\TicketSystem.dll
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.pdb
+E:\7th semester\.Net Database\TicketSystem\obj\Debug\net5.0\TicketSystem.genruntimeconfig.cache
