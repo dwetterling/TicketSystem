@@ -1,15 +1,23 @@
 ﻿using System;
 using System.IO;
+using NLog.Web;
+
 
 
 namespace TicketSystem
 {
     class Program
     {
+
+        private static NLog.Logger logger = NLogBuilder.ConfigureNLog(Directory.GetCurrentDirectory() + "\\nlog.config").GetCurrentClassLogger();
         static void Main(string[] args)
         {
 
-            
+            string ticketFilePath = Directory.GetCurrentDirectory() + "\\tickets.csv";
+           
+           logger.Info("Program started");
+
+            TicketFile ticketFile = new TicketFile(ticketFilePath);
             string menuSelection = "";
             do
             {
@@ -20,52 +28,55 @@ namespace TicketSystem
 
                 if (menuSelection == "1")
                 {
-                    if (File.Exists("tickets.csv"))
+                    foreach(Ticket t in ticketFile.Tickets)
                     {
-                        StreamReader sr = new StreamReader("tickets.csv");
-
-                        while (!sr.EndOfStream)
-                        {
-                            
-                            Console.WriteLine("TicketID, Summary, Status, Priority, Submitter, Assigned, Watching");
-                            String ticket = System.IO.File.ReadAllText("tickets.csv");
-                            Console.WriteLine(ticket);
-                            break;
-
-                        }
-
-                        sr.Close();
-
+                        Console.WriteLine(t.Display());
                     }
                 }
                 else if (menuSelection == "2")
                 {
-                    StreamWriter sw = new StreamWriter("tickets.csv", append:true);
                     string moreTickets = "";
                     do
                     {
-                        Console.WriteLine("Enter the ticket ID");
-                        string ticketId = Console.ReadLine();
+                        //Add Ticket
+                        Ticket ticket = new Ticket();
                         Console.WriteLine("Enter the ticket summary");
-                        string summary = Console.ReadLine();
+                        ticket.summary = Console.ReadLine();
                         Console.WriteLine("Enter the ticket status");
-                        string status = Console.ReadLine();
+                        ticket.status = Console.ReadLine();
                         Console.WriteLine("Enter the ticket priority");
-                        string priority = Console.ReadLine();
+                        ticket.priority = Console.ReadLine();
                         Console.WriteLine("Enter who submitted the ticket");
-                        string submitter = Console.ReadLine();
+                        ticket.submitter = Console.ReadLine();
                         Console.WriteLine("Enter who was assigned the ticket");
-                        string assigned = Console.ReadLine();
-                        Console.WriteLine("Enter who is watching the ticket");
-                        string watching = Console.ReadLine();
+                        ticket.assigned = Console.ReadLine();
 
-                        sw.WriteLine("{0},{1},{2},{3},{4},{5},{6}", ticketId, summary, status, priority, submitter, assigned, watching);
+                        string watchers;
+                        do{
+                            //get all watching
+                            Console.WriteLine("Enter who is watching the ticket");
+                            watchers = Console.ReadLine();
+                            //if user enters "done" stop adding to watching
+                            //maybe no one is watching the ticket
+                            if (watchers != "done")
+                            {
+                                ticket.watching.Add(watchers);
+                            }
 
+                        } while (watchers != "done");
+                        //specify if no one is watching the ticket
+                        if (ticket.watching.Count == 0)
+                        {
+                            ticket.watching.Add("(No users watching this ticket)");
+                        }
+
+                        ticketFile.AddTicket(ticket);
+                        
                         Console.WriteLine("Do you want to enter another ticket (y/n)?");
                         moreTickets = Console.ReadLine();
 
                     } while (moreTickets.ToLower() == "y");
-                    sw.Close();
+                    
                 }
 
             } while (menuSelection != "3");

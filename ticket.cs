@@ -7,8 +7,7 @@ namespace TicketSystem
     {
         public UInt64 TicketID { get; set;}
 
-        string _summary;
-
+        
         public string summary{get; set;}
         
     
