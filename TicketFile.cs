@@ -55,6 +55,7 @@ namespace TicketSystem
                 StreamWriter sw = new StreamWriter(filePath, true);
                 sw.WriteLine($"{ticket.TicketID},{ticket.summary},{ticket.status},{ticket.priority},{ticket.submitter},{ticket.assigned},{string.Join("|", ticket.watching)}");
                 sw.Close();
+                Tickets.Add(ticket);
                 logger.Info("Ticket id {Id} added", ticket.TicketID);
                 }
                 catch(Exception ex)

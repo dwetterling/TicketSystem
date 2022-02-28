@@ -35,9 +35,7 @@ namespace TicketSystem
                 }
                 else if (menuSelection == "2")
                 {
-                    string moreTickets = "";
-                    do
-                    {
+                    
                         //Add Ticket
                         Ticket ticket = new Ticket();
                         Console.WriteLine("Enter the ticket summary");
@@ -72,12 +70,10 @@ namespace TicketSystem
 
                         ticketFile.AddTicket(ticket);
                         
-                        Console.WriteLine("Do you want to enter another ticket (y/n)?");
-                        moreTickets = Console.ReadLine();
 
-                    } while (moreTickets.ToLower() == "y");
-                    
-                }
+                    } 
+             
+                
 
             } while (menuSelection != "3");
 
