@@ -36,6 +36,7 @@ namespace TicketSystem
                     ticket.submitter = ticketInformation[4];
                     ticket.assigned = ticketInformation[5];
                     ticket.watching = ticketInformation[6].Split('|').ToList();
+                    ticket.severity = ticketInformation[7];
                     Tickets.Add(ticket);
                 }
             sr.Close();
@@ -53,7 +54,7 @@ namespace TicketSystem
             try{
                 ticket.TicketID = Tickets.Max(t => t.TicketID) + 1;
                 StreamWriter sw = new StreamWriter(filePath, true);
-                sw.WriteLine($"{ticket.TicketID},{ticket.summary},{ticket.status},{ticket.priority},{ticket.submitter},{ticket.assigned},{string.Join("|", ticket.watching)}");
+                sw.WriteLine($"{ticket.TicketID},{ticket.summary},{ticket.status},{ticket.priority},{ticket.submitter},{ticket.assigned},{string.Join("|", ticket.watching)},{ticket.severity}");
                 sw.Close();
                 Tickets.Add(ticket);
                 logger.Info("Ticket id {Id} added", ticket.TicketID);

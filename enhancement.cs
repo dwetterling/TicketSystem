@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace TicketSystem
 {
-    public class Ticket
+    public class Enhancement
     {
         public UInt64 TicketID { get; set;}
 
@@ -20,15 +20,19 @@ namespace TicketSystem
 
            public List<string> watching {get; set;}
 
-           public Ticket()
+           public Enhancement()
            {
                watching = new List<string>();
            }
 
-            public string severity {get; set;}
+           public string software{get; set;}
+           public string cost{get; set;}
+           public string reason{get; set;}
+           public string estimate{get; set;}
+
            public string Display()
            {
-               return $"Id: {TicketID}\nSummary: {summary}\nStatus: {status}\nPriority: {priority}\nSubmitter: {submitter}\nAssigned: {assigned}\nWatching: {string.Join(", ", watching)}\nSeverity: {severity}";
+               return $"Id: {TicketID}\nSummary: {summary}\nStatus: {status}\nPriority: {priority}\nSubmitter: {submitter}\nAssigned: {assigned}\nWatching: {string.Join(", ", watching)}\nSoftware: {software}\nCost: {cost}\nReasoning: {reason}\nEstimate: {estimate}";
            }
     }
 
