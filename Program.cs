@@ -21,7 +21,7 @@ namespace TicketSystem
 
             TicketFile ticketFile = new TicketFile(ticketFilePath);
             EnhancementFile enhancementFile = new EnhancementFile(enhancementFilePath);
-            //TaskFile taskFile = new TaskFile(taskFilePath);
+            TaskFile taskFile = new TaskFile(taskFilePath);
             string menuSelection = "";
             string fileSelection ="";
             do
@@ -48,12 +48,12 @@ namespace TicketSystem
                         Console.WriteLine(e.Display());
                     }
                     }
-                    /* if (fileSelection == "3"){
-                            foreach(Task t in taskFile.Tasks)
+                     if (fileSelection == "3"){
+                            foreach(Task t in taskFile.Tickets)
                     {
                         Console.WriteLine(t.Display());
                     } 
-                    }*/
+                    }
                     
                 }
                 else if (menuSelection == "2")
@@ -144,7 +144,7 @@ namespace TicketSystem
                         enhancementFile.AddTicket(enhancement);
                         
                     }
-                   /*  if(fileSelection =="3"){
+                     if(fileSelection =="3"){
                         Task task = new Task();
                         Console.WriteLine("Enter the ticket summary");
                         task.summary = Console.ReadLine();
@@ -175,9 +175,13 @@ namespace TicketSystem
                         {
                             task.watching.Add("(No users watching this ticket)");
                         }
+                        Console.WriteLine("Enter the project name");
+                        task.projectname = Console.ReadLine();
+                        Console.WriteLine("Enter the due date");
+                        task.duedate = Console.ReadLine();
 
                         taskFile.AddTicket(task);
-                    } */
+                    } 
                     } 
              
                 
