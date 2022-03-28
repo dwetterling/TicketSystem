@@ -3,9 +3,9 @@
 2,test2,open,high,Johnny,Frank,Susan Hillary Donald Mickey,red
 3,test3,open,high,Bill,Melissa,Trevor Amanda Jimmy4,red
 4,test4,open,high,Garry,Spongebob,(No users watching this ticket),red
-5,test6,open,low,Spongebob,Plankton,Garry,red
-6,,,,,,bill,red
-7,test10,closed,low,John,Bill,Milly,red
-8,testtt,testtt,testtt,testtt,testtt,testt,red
-9,test,test,test,test,test,test,red10,test,test,test,test,test,test,green
-10,test10,test,test,Bill,John,Milly,red
+5,test5,open,low,Spongebob,Plankton,Garry,red
+6,test6,closed,low,John,Bill,Milly,red
+7,test7,testtt,testtt,testtt,testtt,testt,red
+8,test8,test,test,test,test,test,red
+9,test10,test,test,Bill,John,Milly,red
+10,test,test,test,test,test,test,green

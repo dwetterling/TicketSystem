@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using NLog.Web;
+using System.Linq;
 
 
 
@@ -24,11 +25,13 @@ namespace TicketSystem
             TaskFile taskFile = new TaskFile(taskFilePath);
             string menuSelection = "";
             string fileSelection ="";
+            string SearchOption = "";
             do
             {
                 Console.WriteLine("1) Read from file ");
                 Console.WriteLine("2) Write ticket to file");
-                Console.WriteLine("3) Exit application");
+                Console.WriteLine("3) Search tickets");
+                Console.WriteLine("4) Exit application");
                 menuSelection = Console.ReadLine();
 
                 if (menuSelection == "1")
@@ -182,11 +185,101 @@ namespace TicketSystem
 
                         taskFile.AddTicket(task);
                     } 
-                    } 
+                    }
+                     else if (menuSelection == "3") {
+                         Console.WriteLine("Please choose how you want to search\n 1. Status\n2. priority\n3.submitter");
+                    SearchOption = Console.ReadLine();   
+                    if(SearchOption == "1"){
+
+        
+            Console.WriteLine("Enter ticket status you want to search by");
+            var search = Console.ReadLine();
+                    
+                     var searchTickets = ticketFile.Tickets.Where(m => m.status.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+                     var searchEnhancements = enhancementFile.Tickets.Where(m => m.status.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+                     var searchTasks = taskFile.Tickets.Where(m => m.status.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+            Console.WriteLine($"There are {searchTickets.Count()} tickets with {search} as the status:");
+            foreach(string t in searchTickets)
+            {
+                Console.WriteLine($"ticket ID:  {t}");
+            
+            }
+            Console.WriteLine($"There are {searchEnhancements.Count()} enhancements with {search} as the status:");
+            foreach(string t in searchEnhancements)
+            {
+                Console.WriteLine($"Enhancement ticket ID:  {t}");
+            
+            }
+            Console.WriteLine($"There are {searchTasks.Count()} tasks with {search} as the status:");
+            foreach(string t in searchTasks)
+            {
+                Console.WriteLine($"Task ticket ID:  {t}");
+            
+            }
+            
+            
+                     }if(SearchOption == "2"){
+
+        
+            Console.WriteLine("Enter ticket priority you want to search by");
+            var search = Console.ReadLine();
+                    
+                     var searchTickets = ticketFile.Tickets.Where(m => m.priority.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+                     var searchEnhancements = enhancementFile.Tickets.Where(m => m.priority.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+                     var searchTasks = taskFile.Tickets.Where(m => m.priority.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+            Console.WriteLine($"There are {searchTickets.Count()} tickets with {search} as the priority:");
+            foreach(string t in searchTickets)
+            {
+                Console.WriteLine($"ticket ID:  {t}");
+            
+            }
+            Console.WriteLine($"There are {searchEnhancements.Count()} enhancements with {search} as the priority:");
+            foreach(string t in searchEnhancements)
+            {
+                Console.WriteLine($"Enhancement ticket ID:  {t}");
+            
+            }
+            Console.WriteLine($"There are {searchTasks.Count()} tasks with {search} as the priority:");
+            foreach(string t in searchTasks)
+            {
+                Console.WriteLine($"Task ticket ID:  {t}");
+            
+            }
+                     }if(SearchOption == "3"){
+
+        
+            Console.WriteLine("Enter ticket submitter you want to search by");
+            var search = Console.ReadLine();
+                    
+                     var searchTickets = ticketFile.Tickets.Where(m => m.submitter.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+                     var searchEnhancements = enhancementFile.Tickets.Where(m => m.submitter.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+                     var searchTasks = taskFile.Tickets.Where(m => m.submitter.Contains(search, StringComparison.OrdinalIgnoreCase)).Select(m => m.TicketID.ToString());
+            Console.WriteLine($"There are {searchTickets.Count()} tickets with {search} as the submitter:");
+            foreach(string t in searchTickets)
+            {
+                Console.WriteLine($"ticket ID:  {t}");
+            
+            }
+            Console.WriteLine($"There are {searchEnhancements.Count()} enhancements with {search} as the submitter:");
+            foreach(string t in searchEnhancements)
+            {
+                Console.WriteLine($"Enhancement ticket ID:  {t}");
+            
+            }
+            Console.WriteLine($"There are {searchTasks.Count()} tasks with {search} as the submitter:");
+            foreach(string t in searchTasks)
+            {
+                Console.WriteLine($"Task ticket ID:  {t}");
+            
+            }
+                     }
+
+
+                     }
              
                 
 
-            } while (menuSelection != "3");
+            } while (menuSelection != "4");
 
             
             Console.ReadLine();
